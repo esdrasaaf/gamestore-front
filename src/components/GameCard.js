@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export default function GameCard ({ name, image}) {
+export default function GameCard ({ id, image}) {
     return (
         <GameContent>
-            <img src={image} alt="Banner Game"/>
+            <Link to={`/home/${id}`}><img src={image} alt="Banner Game"/></Link>
         </GameContent>
     )
 }

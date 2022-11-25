@@ -1,29 +1,16 @@
-import { useEffect, useState } from "react"
-import axios from "axios"
+import { useContext } from "react"
+import { GameInfoContext } from "../contexts/gameInfo"
+import GameCard from "./GameCard"
 import styled from "styled-components"
-import GameCard from "./Game"
-import BASE_URL from "../constants/url"
 
 export default function EmphasisGameList () {
-    const [games, setGames] = useState([])
-
-    useEffect(() => {
-        const promisse = axios.get(`${BASE_URL}/games`)
-
-        promisse.then((res) => {
-            setGames(res.data)
-        })
-
-        promisse.catch((err) => {
-            console.log(err.data)
-        })
-    }, [])
+    const { games } = useContext(GameInfoContext)
 
     return (
         <GameList>
-            {games.map((g) => {
+            {games.map((g, idx) => {
                 if (g.emphasis) {
-                    return <GameCard key={g._id} image={g.image} name={g.name}/>
+                    return <GameCard key={idx} image={g.image} id={g._id}/>
                 }
             })}
         </GameList>
@@ -32,7 +19,6 @@ export default function EmphasisGameList () {
 
 //Styled Components
 const GameList = styled.ul`
-
     display: flex;
     overflow-x: auto;
     gap: 15px;
