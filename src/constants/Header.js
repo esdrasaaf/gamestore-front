@@ -2,6 +2,7 @@ import styled from "styled-components"
 import logo from "../assets/images/logo.svg"
 import userIcon from "../assets/images/userIcon.svg"
 import marketCart from "../assets/images/marketCart.svg"
+import { Link } from "react-router-dom"
 
 export default function Header () {
     return (
@@ -12,8 +13,9 @@ export default function Header () {
             </LogoContainer>
 
             <IconsContainer>
-                <img src={marketCart} alt="MarketCart Icon"/>
-                <img src={userIcon} alt="User Icon"/>
+                <Link></Link>
+                <Link to={"/cart"}><img src={marketCart} alt="MarketCart Icon"/></Link>
+                <Link to={"/historic"}><img src={userIcon} alt="User Icon"/></Link>
             </IconsContainer>
         </Container>
     )
@@ -21,7 +23,7 @@ export default function Header () {
 
 //Styled Components
 const Container = styled.header`
-    height: 59px;
+    height: 79px;
     width: 100vw;
     display: flex;
     justify-content: space-between;
@@ -50,6 +52,8 @@ const IconsContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
-    padding: 0px 12px;
+    gap: 20px;
+    padding: 0px 20px;
+
+    img { height: 35px; cursor: pointer; }
 `

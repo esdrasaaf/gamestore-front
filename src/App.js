@@ -3,13 +3,16 @@ import GameInfoProvider from './contexts/gameInfo';
 import GlobalStyle from "./assets/styles/GlobalStyle";
 import GamesCatalog from "./pages/Home/Catalog";
 import SignIn from './pages/Login/Sign-in'
-import SignUp from './pages/Login/Sign-up'
+import SignUp from './pages/Login/Sign-up';
 import SelectedGame from './pages/Home/SelectedGame'
+import UserInfoProvider from './contexts/userInfo';
+
 
 export default function App () {
     return (
         <BrowserRouter>
             <GlobalStyle/>
+            <UserInfoProvider>
             <GameInfoProvider>
                 <Routes>
                     <Route path="/" element={<SignIn/>}/>
@@ -18,6 +21,7 @@ export default function App () {
                     <Route path="/home/:selectedGameId" element={<SelectedGame/>}/>
                 </Routes>
             </GameInfoProvider>
+            </UserInfoProvider>
         </BrowserRouter>
     )
 }
