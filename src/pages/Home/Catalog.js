@@ -2,9 +2,25 @@ import styled from "styled-components"
 import Header from "../../constants/Header"
 import EmphasisGameList from "../../components/EmphasisList"
 import CatalogList from "../../components/CatalogList"
+import { useContext, useEffect } from "react"
+import { GameInfoContext } from "../../contexts/gameInfo"
+import BASE_URL from "../../constants/url"
+import axios from "axios"
 
 export default function GamesCatalog () {
-    
+    const { setGames } = useContext(GameInfoContext)
+
+    useEffect(() => {
+        const promisse = axios.get(`${BASE_URL}/games`)
+
+        promisse.then((res) => {
+            setGames(res.data)
+        })
+
+        promisse.catch((err) => {
+            console.log(err.data)
+        })
+    }, [setGames])
 
     return (
         <Container>
