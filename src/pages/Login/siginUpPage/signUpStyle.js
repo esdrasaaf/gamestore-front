@@ -24,7 +24,7 @@ export const SingUpInforContainer = styled.form`
 
     input {
             width:326px;
-            height:58px;
+            height:38px;
             background: #FFFFFF;
             border-radius: 5px;
             border: 1px solid #D5D5D5;
