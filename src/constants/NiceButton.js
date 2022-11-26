@@ -1,8 +1,25 @@
 import styled from "styled-components"
+import swal from "sweetalert"
 
 export default function NiceButton ({content}) {
+    function verifyContent () {
+        if (content === "Adicionar ao Carrinho") {
+            swal({
+                title: "Item adicionado ao carrinho com sucesso!",
+                icon: "success"
+            })            
+        }
+
+        if (content === "Adicionar aos Favoritos") {
+            swal({
+                title: "Item adicionado aos favoritos com sucesso!",
+                icon: "success"
+            })            
+        }
+    }
+
     return (
-        <Button>{content}</Button>
+        <Button onClick={verifyContent}>{content}</Button>
     )
 }
 
