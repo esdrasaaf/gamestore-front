@@ -3,14 +3,14 @@ import React, {createContext, useState} from "react";
 export const UserInfoContext = createContext ({})
 
 function UserInfoProvider ({children}) {
-     const [userSessionInfo , setUserSessionInfo] = useState ({
-        token:"",
-        name:""
+     const [userInfo , setUserInfo] = useState ({
+        token:localStorage.getItem("token"),
+        name:localStorage.getItem("name")
     })
     
     const config = {
         headers: {
-            Authorization: `Bearer ${userSessionInfo.token} `
+            Authorization: `Bearer ${userInfo.token} `
         }
     }
 
@@ -20,10 +20,11 @@ function UserInfoProvider ({children}) {
     })
 
     return (
-        <UserInfoContext.Provider value={{userSessionInfo , setUserSessionInfo, config, logInObj,setLogInObj }}>
+        <UserInfoContext.Provider value={{userInfo , setUserInfo, config, logInObj,setLogInObj }}>
             {children}
         </UserInfoContext.Provider>
     )
 }
 
 export default UserInfoProvider
+
