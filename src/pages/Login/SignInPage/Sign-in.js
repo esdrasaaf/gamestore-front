@@ -37,8 +37,8 @@ export default function SignIn() {
             <UserLoginInforContainer onSubmit={logIn}>
                 <input placeholder="E-mail" type="email" name="email" value={logInObj.email} onChange={handleLogIn} required ></input>
                 <input placeholder="Senha" type="password" name="password" value={logInObj.password} onChange={handleLogIn} required ></input>
-                <button><span></span> <span></span><span></span><span></span> Entrar </button>
-                <StyledLink><h1>Primeira vez? Cadastre-se!</h1></StyledLink>
+                <button type="submit"><span></span> <span></span><span></span><span></span> Entrar </button>
+                <StyledLink to={"/sign-up"}><h1>Primeira vez? Cadastre-se!</h1></StyledLink>
             </UserLoginInforContainer>
 
         </Container>
