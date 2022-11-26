@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
         line-height: 1;
-        background-color: #e5e5e5
+        background-image: linear-gradient(140deg, #5e3594 0, #311e6b 25%, #04043f 50%, #00001a 75%, #000000 100%);
     }
     ol, ul {
         list-style: none;

@@ -6,7 +6,8 @@ import SignIn from './pages/Login/Sign-in'
 import SignUp from './pages/Login/Sign-up';
 import SelectedGame from './pages/Home/SelectedGame'
 import UserInfoProvider from './contexts/userInfo';
-
+import CartPage from './pages/Home/Cart';
+import HistoricPage from './pages/Profile/Historic';
 
 export default function App () {
     return (
@@ -19,6 +20,8 @@ export default function App () {
                     <Route path="/sign-up" element={<SignUp/>}/>
                     <Route path="/home" element={<GamesCatalog/>}/>
                     <Route path="/home/:selectedGameId" element={<SelectedGame/>}/>
+                    <Route path="/cart" element={<CartPage/>}/>
+                    <Route path="/historic" element={<HistoricPage/>}/>
                 </Routes>
             </GameInfoProvider>
             </UserInfoProvider>

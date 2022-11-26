@@ -43,7 +43,6 @@ export default function GamesCatalog () {
 
 //Styled Components
 const Container = styled.div `
-    background-image: linear-gradient(140deg, #5e3594 0, #311e6b 25%, #04043f 50%, #00001a 75%, #000000 100%);    
     width: 100vw;
     height: 100vh;
     display: flex;
