@@ -3,19 +3,28 @@ import React, {createContext, useState} from "react";
 export const UserInfoContext = createContext ({})
 
 function UserInfoProvider ({children}) {
-    const [token, setToken] = useState('')
+     const [userInfo , setUserInfo] = useState ({
+        token:localStorage.getItem("token"),
+        name:localStorage.getItem("name")
+    })
     
     const config = {
         headers: {
-            Authorization: `Bearer ${token} `
+            Authorization: `Bearer ${userInfo.token} `
         }
     }
 
+    const [logInObj,setLogInObj] = useState({
+        email:"",
+        password:""        
+    })
+
     return (
-        <UserInfoContext.Provider value={{setToken, config }}>
+        <UserInfoContext.Provider value={{userInfo , setUserInfo, config, logInObj,setLogInObj }}>
             {children}
         </UserInfoContext.Provider>
     )
 }
 
 export default UserInfoProvider
+
