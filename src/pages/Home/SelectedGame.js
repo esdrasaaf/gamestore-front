@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import styled from "styled-components"
 import SelectedGameCard from "../../components/SelectedGameCard"
 import axios from "axios"
+import swal from "sweetalert"
 import BASE_URL from "../../constants/url"
 import { UserInfoContext } from "../../contexts/userInfo"
 
@@ -10,6 +11,7 @@ export default function GameInfo () {
     const { selectedGameId } = useParams()
     const [selectedGame, setSelectedGame] = useState([])
     const { config } = useContext(UserInfoContext)
+    const navigate = useNavigate()
     
     useEffect(() => {
         const promisse = axios.get(`${BASE_URL}/games/${selectedGameId}`, config)
@@ -19,9 +21,15 @@ export default function GameInfo () {
         })
 
         promisse.catch((err) => {
-            console.log(err)
+            console.log(err.response.data)
+            swal({
+                title: err.response.data,
+                text: "Logue novamente, por favor! :)",
+                icon: "error"
+            })
+            navigate("/")
         })
-    }, [selectedGameId])
+    }, [selectedGameId, config])
 
     return (
         <Container>
