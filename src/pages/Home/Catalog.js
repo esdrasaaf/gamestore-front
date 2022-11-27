@@ -4,14 +4,16 @@ import EmphasisGameList from "../../components/EmphasisList"
 import CatalogList from "../../components/CatalogList"
 import { useContext, useEffect } from "react"
 import { GameInfoContext } from "../../contexts/gameInfo"
+import { UserInfoContext } from "../../contexts/userInfo"
 import BASE_URL from "../../constants/url"
 import axios from "axios"
 
 export default function GamesCatalog () {
     const { setGames } = useContext(GameInfoContext)
+    const { config } = useContext(UserInfoContext)
 
     useEffect(() => {
-        const promisse = axios.get(`${BASE_URL}/games`)
+        const promisse = axios.get(`${BASE_URL}/games`, config)
 
         promisse.then((res) => {
             setGames(res.data)

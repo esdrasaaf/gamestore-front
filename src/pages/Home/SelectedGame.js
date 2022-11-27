@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import SelectedGameCard from "../../components/SelectedGameCard"
 import axios from "axios"
 import BASE_URL from "../../constants/url"
+import { UserInfoContext } from "../../contexts/userInfo"
 
 export default function GameInfo () {
     const { selectedGameId } = useParams()
-    const [selectedGame, setSelectedGame] = useState([])      
+    const [selectedGame, setSelectedGame] = useState([])
+    const { config } = useContext(UserInfoContext)
     
     useEffect(() => {
-        const promisse = axios.get(`${BASE_URL}/games/${selectedGameId}`)
+        const promisse = axios.get(`${BASE_URL}/games/${selectedGameId}`, config)
 
         promisse.then((res) => {
             setSelectedGame(res.data)
