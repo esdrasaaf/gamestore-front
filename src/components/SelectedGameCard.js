@@ -2,7 +2,7 @@ import styled from "styled-components";
 import NiceButton from "../constants/NiceButton";
 import AgeCard from "./Age";
 
-export default function SelectedGameCard ({ image, name, description, age, price, category}) {
+export default function SelectedGameCard ({ image, name, description, age, price, category, game}) {
 
     return (
         <Container>
@@ -37,8 +37,8 @@ export default function SelectedGameCard ({ image, name, description, age, price
                 </Info>
 
                 <ActionButtons>
-                    <NiceButton content={"Adicionar ao Carrinho"}/>
-                    <NiceButton content={"Adicionar aos Favoritos"}/>
+                    <NiceButton game={game} content={"Adicionar ao Carrinho"}/>
+                    <NiceButton game={game} content={"Adicionar aos Favoritos"}/>
                 </ActionButtons>
             </InfoContainer>
         </Container>

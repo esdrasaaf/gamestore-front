@@ -1,13 +1,30 @@
+import { useContext } from "react"
 import styled from "styled-components"
 import swal from "sweetalert"
+import axios from "axios"
+import BASE_URL from "./url"
+import { UserInfoContext } from "../contexts/userInfo"
 
-export default function NiceButton ({content}) {
+
+export default function NiceButton ({content, game}) {
+    const { config } = useContext(UserInfoContext)
+
     function verifyContent () {
         if (content === "Adicionar ao Carrinho") {
-            swal({
-                title: "Item adicionado ao carrinho com sucesso!",
-                icon: "success"
-            })            
+            const promisse = axios.post(`${BASE_URL}/cart`, game, config)
+
+            promisse.then((res) => {
+                console.log(res.data)
+
+                swal({
+                    title: "Item adicionado ao carrinho com sucesso!",
+                    icon: "success"
+                })
+            })
+
+            promisse.catch((err) => {
+                console.log(err)
+            })
         }
 
         if (content === "Adicionar aos Favoritos") {

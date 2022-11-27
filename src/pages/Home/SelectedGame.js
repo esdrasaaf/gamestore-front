@@ -33,7 +33,8 @@ export default function GameInfo () {
 
     return (
         <Container>
-            <SelectedGameCard 
+            <SelectedGameCard
+                game={selectedGame}
                 image={selectedGame.image} 
                 name={selectedGame.name} 
                 description={selectedGame.description} 
