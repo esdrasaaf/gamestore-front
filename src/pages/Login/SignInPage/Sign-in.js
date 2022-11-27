@@ -18,7 +18,7 @@ export default function SignIn() {
 
     function logIn(e) {
         e.preventDefault();
-        axios.post(`${BASE_URL}/sigin`, logInObj)
+        axios.post(`${BASE_URL}/signin`, logInObj)
             .then((res) => {
                 setUserInfo({
                     token: (res.data.token),

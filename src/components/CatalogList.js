@@ -22,4 +22,8 @@ const GameList = styled.ul`
     display: flex;
     overflow-x: auto;
     gap: 15px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `
