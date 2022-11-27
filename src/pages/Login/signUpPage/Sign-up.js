@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BASE_URL from "../../../constants/url";
 import axios from "axios";
+import swal from "sweetalert";
 
 
 export default function SignUp() {
@@ -29,8 +30,11 @@ export default function SignUp() {
                 navigate("/");
             })
             .catch((err) => {
-                alert(err.response.data)
                 console.log(err)
+                swal({
+                    title: err.response.data,
+                    icon: "error"
+                })
             })
     }
 

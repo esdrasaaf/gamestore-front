@@ -1,9 +1,35 @@
 import styled from "styled-components";
 import Header from "../../constants/Header";
 import CartList from "../../components/CartList"
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import BASE_URL from "../../constants/url"
+import UserInfoContext from "../../contexts/userInfo"
+import swal from "sweetalert"
+import { useNavigate } from "react-router-dom";
 
 export default function CartPage () {
-    const cartItens = [] //Variável de teste, trocar pelo array de jogos adicionados no carrinho
+    const [cartItens, setCartItens] = useState([])
+    const { config } = useContext(UserInfoContext)
+    const navigate = useNavigate()
+    
+    useEffect(() => {
+        const promisse = axios.get(`${BASE_URL}/cart`, config)
+
+        promisse.then((res) => {
+            setCartItens(res.data)
+        })
+
+        promisse.catch((err) => {
+            console.log(err.response.data)
+            swal({
+                title: err.response.data,
+                text: "Logue novamente, por favor! :)",
+                icon: "error"
+            })
+            navigate("/")
+        })
+    }, [])
 
     return (
         <Container>

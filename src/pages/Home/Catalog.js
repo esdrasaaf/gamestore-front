@@ -7,22 +7,32 @@ import { GameInfoContext } from "../../contexts/gameInfo"
 import { UserInfoContext } from "../../contexts/userInfo"
 import BASE_URL from "../../constants/url"
 import axios from "axios"
+import swal from "sweetalert"
+import { useNavigate } from "react-router-dom"
 
 export default function GamesCatalog () {
     const { setGames } = useContext(GameInfoContext)
     const { config } = useContext(UserInfoContext)
+    const navigate = useNavigate()
 
     useEffect(() => {
         const promisse = axios.get(`${BASE_URL}/games`, config)
 
         promisse.then((res) => {
             setGames(res.data)
+            console.log(res)
         })
 
         promisse.catch((err) => {
-            console.log(err.data)
+            console.log(err.response.data)
+            swal({
+                title: err.response.data,
+                text: "Logue novamente, por favor! :)",
+                icon: "error"
+            })
+            navigate("/")
         })
-    }, [setGames])
+    }, [setGames, config])
 
     return (
         <Container>

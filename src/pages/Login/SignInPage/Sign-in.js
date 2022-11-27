@@ -3,6 +3,7 @@ import { UserInfoContext } from "../../../contexts/userInfo";
 import React from "react";
 import BASE_URL from "../../../constants/url";
 import axios from "axios";
+import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 
 
@@ -29,7 +30,10 @@ export default function SignIn() {
 
                 navigate("/home")
             })
-            .catch((err) => alert(err.response.data))
+            .catch((err) => swal({
+                title: err.response.data,
+                icon: "error"
+            }))
     }
     return (
         <Container>
