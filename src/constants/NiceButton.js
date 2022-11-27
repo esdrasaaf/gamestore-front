@@ -13,9 +13,7 @@ export default function NiceButton ({content, game}) {
         if (content === "Adicionar ao Carrinho") {
             const promisse = axios.post(`${BASE_URL}/cart`, game, config)
 
-            promisse.then((res) => {
-                console.log(res.data)
-
+            promisse.then(() => {
                 swal({
                     title: "Item adicionado ao carrinho com sucesso!",
                     icon: "success"

@@ -20,7 +20,6 @@ export default function GamesCatalog () {
 
         promisse.then((res) => {
             setGames(res.data)
-            console.log(res)
         })
 
         promisse.catch((err) => {
@@ -32,7 +31,7 @@ export default function GamesCatalog () {
             })
             navigate("/")
         })
-    }, [setGames, config])
+    }, [setGames, config, navigate])
 
     return (
         <Container>
