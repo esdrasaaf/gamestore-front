@@ -29,7 +29,7 @@ export default function GameInfo () {
             })
             navigate("/")
         })
-    }, [selectedGameId, config])
+    }, [selectedGameId, config, navigate])
 
     return (
         <Container>

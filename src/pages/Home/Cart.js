@@ -4,12 +4,13 @@ import CartList from "../../components/CartList"
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import BASE_URL from "../../constants/url"
-import UserInfoContext from "../../contexts/userInfo"
+import { UserInfoContext } from "../../contexts/userInfo"
 import swal from "sweetalert"
 import { useNavigate } from "react-router-dom";
 
 export default function CartPage () {
     const [cartItens, setCartItens] = useState([])
+    const [status, setStatus] = useState([])
     const { config } = useContext(UserInfoContext)
     const navigate = useNavigate()
     
@@ -29,7 +30,7 @@ export default function CartPage () {
             })
             navigate("/")
         })
-    }, [])
+    }, [config, navigate, status])
 
     return (
         <Container>
@@ -45,7 +46,7 @@ export default function CartPage () {
                     </span>
                 </EmptyCart>
                     :
-                <CartList/>
+                <CartList purchases={cartItens} setStatus={setStatus}/>
             }
         </Container>
     )
