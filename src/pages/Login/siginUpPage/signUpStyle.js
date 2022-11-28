@@ -10,10 +10,13 @@ align-items:center;
 `
 
 export const Logo = styled.div`
-background-color:gray;
-color: #FFFFFF;
-margin-top:150px;
-margin-bottom:40px;
+margin-top:50px;
+margin-bottom:-40px;
+
+    img{
+        width:350px;
+        margin-right:55px;
+    }
 
 `
 export const SingUpInforContainer = styled.form`

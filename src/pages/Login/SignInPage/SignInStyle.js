@@ -3,17 +3,20 @@ import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
 width: 100vw;
-height: 100vh;
+min-height: 100vh;
 display: flex;
 flex-direction: column;
 align-items:center;
 `
 
 export const Logo = styled.div`
-background-color:gray;
-color: #FFFFFF;
-margin-top:150px;
-margin-bottom:40px;
+margin-top:50px;
+margin-bottom:-40px;
+
+    img{
+        width:350px;
+        margin-right:55px;
+    }
 
 `
 export const UserLoginInforContainer = styled.form`

@@ -4,6 +4,7 @@ import React from "react";
 import BASE_URL from "../../../constants/url";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import logoGameStore from '../../../assets/images/GameStoreLogo.png'
 
 
 export default function SignIn() {
@@ -33,7 +34,7 @@ export default function SignIn() {
     }
     return (
         <Container>
-            <Logo> Aqui vai a logo</Logo>
+            <Logo> <img src={logoGameStore} alt="Logo"></img></Logo>
             <UserLoginInforContainer onSubmit={logIn}>
                 <input placeholder="E-mail" type="email" name="email" value={logInObj.email} onChange={handleLogIn} required ></input>
                 <input placeholder="Senha" type="password" name="password" value={logInObj.password} onChange={handleLogIn} required ></input>
