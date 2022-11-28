@@ -28,7 +28,7 @@ export default function CartList ({ purchases, setStatus }) {
 
             <ConfirmPurchase>
                 <Total purchases={purchases}/>
-                <NiceButton content={"Confirmar Compra"}/>
+                <NiceButton purchases={purchases} content={"Confirmar Compra"}/>
             </ConfirmPurchase>
         </Container>
     )
