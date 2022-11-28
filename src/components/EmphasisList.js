@@ -24,6 +24,17 @@ const GameList = styled.ul`
     gap: 15px;
 
     &::-webkit-scrollbar {
-        display: none;
+        width: 15px;
+        padding: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #ffffff;
+        border-radius: 10px;
+        border: 1px solid #ffffff;
     }
 `
