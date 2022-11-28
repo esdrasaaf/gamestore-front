@@ -8,8 +8,10 @@ export default function Header () {
     return (
         <Container>
             <LogoContainer>
-                <img src={logo} alt="Logo"/>
-                <h1>GameStore</h1>
+                <Link to={"/home"}>
+                    <img src={logo} alt="Logo"/>
+                    GameStore
+                </Link>
             </LogoContainer>
 
             <IconsContainer>
@@ -35,16 +37,23 @@ const LogoContainer = styled.div`
     width: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 5px;
+    align-items: center;  
     padding: 0px 12px;
     font-family: 'Red Hat Display', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 25px;
     line-height: 26px;
-    color: #FFFAFA;
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 1);
+
+    a {
+        gap: 10px;
+        text-decoration: none; 
+        color: #FFFAFA;
+        display: flex;
+        justify-content: center;
+        align-items: center;    
+    }
 `
 const IconsContainer = styled.div`
     height: 100%;

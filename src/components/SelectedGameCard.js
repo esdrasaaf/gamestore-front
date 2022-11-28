@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import NiceButton from "../constants/NiceButton";
 import AgeCard from "./Age";
+import {IoMdArrowRoundBack} from "react-icons/io"
+import { useNavigate } from "react-router-dom"
 
-export default function SelectedGameCard ({ image, name, description, age, price, category}) {
+export default function SelectedGameCard ({ image, name, description, age, price, category, game}) {
+    const navigate = useNavigate()
 
     return (
         <Container>
             <Title>
+                <IoMdArrowRoundBack onClick={() => { navigate("/home") }}/>
                 <img src={image} alt="Banner"/>
                 <span>{name}</span>
             </Title>
@@ -37,8 +41,8 @@ export default function SelectedGameCard ({ image, name, description, age, price
                 </Info>
 
                 <ActionButtons>
-                    <NiceButton content={"Adicionar ao Carrinho"}/>
-                    <NiceButton content={"Adicionar aos Favoritos"}/>
+                    <NiceButton game={game} content={"Adicionar ao Carrinho"}/>
+                    <NiceButton game={game} content={"Adicionar aos Favoritos"}/>
                 </ActionButtons>
             </InfoContainer>
         </Container>
@@ -55,6 +59,7 @@ const Container = styled.div`
     height: 70%;
 `
 const Title = styled.div`
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,9 +69,19 @@ const Title = styled.div`
     width: 35%;
     gap: 50px;
 
+    svg {
+        position: absolute;
+        color: #ffffff;
+        top: 3%;
+        left: 0;
+        font-size: 40px;
+        cursor: pointer;
+    }
+
     img {
         height: 400px;
         width: 300px;
+        border-radius: 10px;
     }
 
     span {
