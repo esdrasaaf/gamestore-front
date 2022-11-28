@@ -8,8 +8,6 @@ export default function HistoricList ({ historic }) {
         return list.push(h.gameArray)
     })
 
-    console.log(list)
-
     return (
         <Container>
             <h1>Seu Histórico</h1>
