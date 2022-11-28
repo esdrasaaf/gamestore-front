@@ -1,14 +1,36 @@
 import styled from "styled-components"
 import userIcon from "../assets/images/userIcon.svg"
 import marketCart from "../assets/images/marketCart.svg"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import LogoGameStore from "../assets/images/GameStoreLogo.png"
 import { UserInfoContext } from "../contexts/userInfo"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
+import { MdOutlineLogout } from "react-icons/md"
+import axios from "axios"
+import BASE_URL from "./url"
 
 export default function Header () {
+    const { userInfo, setUserInfo, config, att } = useContext(UserInfoContext);
+    const navigate = useNavigate()
+    const [cartItens, setCartItens] = useState([])
 
-    const {userInfo} = useContext(UserInfoContext);
+    useEffect(() => {
+        const promisse = axios.get(`${BASE_URL}/cart`, config)
+
+        promisse.then((res) => {
+            setCartItens(res.data)
+        })
+
+        promisse.catch((err) => {
+            console.log(err.response.data)
+        })
+    }, [config, att])
+
+    function logout () {
+        setUserInfo({})
+        localStorage.clear()
+        navigate("/")
+    }
 
     return (
         <Container>
@@ -20,9 +42,12 @@ export default function Header () {
             </LogoContainer>
 
             <IconsContainer>
-                <Link></Link>
-                <Link to={"/cart"}><img src={marketCart} alt="MarketCart Icon"/></Link>
+                <Link to={"/cart"}>
+                    <img src={marketCart} alt="MarketCart Icon"/>
+                    <h1>{cartItens.length}</h1>
+                </Link>
                 <Link to={"/historic"}><img src={userIcon} alt="User Icon"/></Link>
+                <MdOutlineLogout onClick={logout}/>
             </IconsContainer>
         </Container>
     )
@@ -72,6 +97,31 @@ const IconsContainer = styled.div`
     align-items: center;
     gap: 20px;
     padding: 0px 20px;
+    
+
+    h1 {
+        background-color: red;
+        color: #FFFAFA;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: "Raleway", cursive;
+        border-radius: 10px;
+        position: absolute;
+        bottom: 60%;
+        left: 60%;
+        padding: 0px 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    a { position: relative; }
 
     img { height: 35px; cursor: pointer; }
+
+    svg { 
+        cursor: pointer;
+        color: #FFFAFA;
+        font-size: 30px;
+    }
 `

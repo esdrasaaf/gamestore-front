@@ -6,7 +6,7 @@ import { useContext } from "react"
 import { UserInfoContext } from "../contexts/userInfo"
 
 export default function TrashButton ({ id, setStatus }) {
-    const { config } = useContext(UserInfoContext)
+    const { config, setAtt } = useContext(UserInfoContext)
 
     function deleteCartItem (id) {
         const token = config.headers.Authorization
@@ -23,6 +23,7 @@ export default function TrashButton ({ id, setStatus }) {
                 icon: "success"
             })
             setStatus([])
+            setAtt([])
         })
 
         promisse.catch((err) => {

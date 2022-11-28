@@ -36,7 +36,7 @@ input {
         line-height: 23px;
         color: #000000;
         font-style: normal;
-        padding-left:16px;
+        padding: 10px 15px;
         margin-bottom:13px;
     }
     button {
@@ -56,6 +56,7 @@ input {
             border: none;
             outline: none;
             background: #232b59;
+            cursor: pointer;
     
             
             :hover{
@@ -151,6 +152,8 @@ input {
 
 export const StyledLink = styled(Link)`
 text-decoration:none;
+font-family: "Raleway";
+font-weight: 700;
 
 &:focus, &:hover, &:visited, &:link, &:active {
     text-decoration:none;
