@@ -37,7 +37,7 @@ export const SingUpInforContainer = styled.form`
             line-height: 23px;
             color: #000000;
             font-style: normal;
-            padding-left:16px;
+            padding: 10px 15px;
             margin-bottom:13px;
         }
         button {
@@ -57,6 +57,7 @@ export const SingUpInforContainer = styled.form`
             border: none;
             outline: none;
             background: #232b59;
+            cursor: pointer;
     
             
             :hover{

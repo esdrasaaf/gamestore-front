@@ -47,7 +47,7 @@ export default function SignUp() {
                 <input placeholder="Nome" type="text" name="name" value={userSignUp.name} onChange={handleSignUp} required></input>
                 <input placeholder="Email" type="email" name="email" value={userSignUp.email} onChange={handleSignUp} required></input>
                 <input placeholder="Senha" type="password" name="password" value={userSignUp.password} onChange={handleSignUp} required></input>
-                <input placeholder="Nome" type="password" name="passwordConfirmation" value={userSignUp.passwordConfirmation} onChange={handleSignUp} required></input>
+                <input placeholder="Confirme a senha" type="password" name="passwordConfirmation" value={userSignUp.passwordConfirmation} onChange={handleSignUp} required></input>
                 <button type="submit"><span></span><span></span><span></span><span></span>Cadastrar</button>
                 <StyledLink to={'/'}><h1>Já tem uma conta? Entre agora!</h1></StyledLink >
             </SingUpInforContainer>
