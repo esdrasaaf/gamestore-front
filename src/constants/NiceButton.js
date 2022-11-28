@@ -6,7 +6,7 @@ import BASE_URL from "./url"
 import { UserInfoContext } from "../contexts/userInfo"
 
 
-export default function NiceButton ({content, game, purchases}) {
+export default function NiceButton ({ content, game, purchases, setStatus }) {
     const { config } = useContext(UserInfoContext)
     
 
@@ -34,6 +34,7 @@ export default function NiceButton ({content, game, purchases}) {
                     title: res.data,
                     icon: "success"
                 })
+                setStatus([])
             })
 
             promisse.catch((err) => {
