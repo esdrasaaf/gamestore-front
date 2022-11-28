@@ -6,8 +6,9 @@ import BASE_URL from "./url"
 import { UserInfoContext } from "../contexts/userInfo"
 
 
-export default function NiceButton ({content, game}) {
+export default function NiceButton ({content, game, purchases}) {
     const { config } = useContext(UserInfoContext)
+    
 
     function verifyContent () {
         if (content === "Adicionar ao Carrinho") {
@@ -16,6 +17,21 @@ export default function NiceButton ({content, game}) {
             promisse.then(() => {
                 swal({
                     title: "Item adicionado ao carrinho com sucesso!",
+                    icon: "success"
+                })
+            })
+
+            promisse.catch((err) => {
+                console.log(err)
+            })
+        }
+
+        if (content === "Confirmar Compra") {
+            const promisse = axios.post(`${BASE_URL}/historic`, purchases, config)
+
+            promisse.then((res) => {
+                swal({
+                    title: res.data,
                     icon: "success"
                 })
             })

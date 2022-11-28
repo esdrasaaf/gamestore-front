@@ -1,16 +1,42 @@
 import styled from "styled-components";
+import axios from "axios";
+import BASE_URL from "../../constants/url";
+import swal from "sweetalert";
 import HistoricList from "../../components/HistoricList";
 import Header from "../../constants/Header"
+import { useContext, useEffect, useState } from "react";
+import { UserInfoContext } from "../../contexts/userInfo";
+import { useNavigate } from "react-router-dom";
 
 export default function HistoricPage () {
-    const arrayTeste = [] //Variável de teste, trocar pelo array de jogos que foram comprados
+    const [historic, setHistoric] = useState([])
+    const { config } = useContext(UserInfoContext)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const promisse = axios.get(`${BASE_URL}/historic`, config)
+
+        promisse.then((res) => {
+             setHistoric(res.data)
+        })
+
+        promisse.catch((err) => {
+            console.log(err.response.data)
+            swal({
+                title: err.response.data,
+                text: "Logue novamente, por favor! :)",
+                icon: "error"
+            })
+            navigate("/")
+        })
+    }, [config, navigate])
 
     return (
         <Container>
             <Header/>
 
             {
-                arrayTeste.length === 0 
+                historic.length === 0 
                     ? 
                 <EmptyHistoric>
                     <h1>Seu histórico</h1>
@@ -19,7 +45,7 @@ export default function HistoricPage () {
                     </span>
                 </EmptyHistoric>
                     :
-                <HistoricList/>
+                <HistoricList historic={historic}/>
             }
         </Container>
     )
