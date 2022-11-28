@@ -1,16 +1,21 @@
 import styled from "styled-components"
-import logo from "../assets/images/logo.svg"
 import userIcon from "../assets/images/userIcon.svg"
 import marketCart from "../assets/images/marketCart.svg"
 import { Link } from "react-router-dom"
+import LogoGameStore from "../assets/images/GameStoreLogo.png"
+import { UserInfoContext } from "../contexts/userInfo"
+import { useContext } from "react"
 
 export default function Header () {
+
+    const {userInfo} = useContext(UserInfoContext);
+
     return (
         <Container>
             <LogoContainer>
                 <Link to={"/home"}>
-                    <img src={logo} alt="Logo"/>
-                    GameStore
+                    <img src={LogoGameStore} alt="Logo"/>
+                    <h1>Olá, {userInfo.name}</h1>
                 </Link>
             </LogoContainer>
 
@@ -53,6 +58,10 @@ const LogoContainer = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;    
+
+    img{
+        width:100px;
+    }
     }
 `
 const IconsContainer = styled.div`
